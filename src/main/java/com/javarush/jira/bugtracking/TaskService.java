@@ -24,7 +24,6 @@ public class TaskService extends BugtrackingService<Task, TaskTo, TaskRepository
         return mapper.toToList(repository.getAll());
     }
     @PutMapping
-
     public void saveTaskTag(Long taskId, String tag){
         if(repository.existsById(taskId))
             repository.saveTaskTag(taskId, tag);
