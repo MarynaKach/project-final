@@ -14,7 +14,7 @@ spring:
 
 # validate db by model
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
 
     properties:
       #  http://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html#configurations
@@ -23,13 +23,15 @@ spring:
         default_batch_fetch_size: 20
         # https://stackoverflow.com/questions/21257819/what-is-the-difference-between-hibernate-jdbc-fetch-size-and-hibernate-jdbc-batc
         jdbc.batch_size: 20
+
+
+  liquibase:
+    changeLog: "classpath:db/changelog.sql"
+
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-
-  liquibase:
-    changeLog: "classpath:db/changelog.sql"
 
   # Jackson Fields Serialization
   jackson:
