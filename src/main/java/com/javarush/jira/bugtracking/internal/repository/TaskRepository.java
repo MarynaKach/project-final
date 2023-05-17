@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 @Transactional(readOnly = true)
@@ -24,10 +23,4 @@ public interface TaskRepository extends BaseRepository<Task> {
     @Modifying
     @Query(value = "DELETE FROM task_tag WHERE task_id = :taskId", nativeQuery = true)
     void deleteTagByTaskId(@Param("taskId") Long taskId);
-
-    @Transactional
-    @Query(value = "SELECT activity.udate FROM  activity WHERE task_id = :taskId AND status_code = :statusCode", nativeQuery = true)
-    Timestamp getUpdateTimeByStatus(@Param("taskId") Long taskId, @Param("statusCode") String statusCode);
-
-
 }
