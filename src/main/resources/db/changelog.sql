@@ -175,7 +175,7 @@ create table USER_ROLE
     constraint FK_USER_ROLE foreign key (USER_ID) references USERS (ID) on delete cascade
 );
 
---changeset kmpk:populate_data
+--changeset kmpk:id 1:populate_data
 
 insert into USERS (EMAIL, PASSWORD, FIRST_NAME, LAST_NAME, DISPLAY_NAME)
 values ('user@gmail.com', '{noop}password', 'userFirstName', 'userLastName', 'userDisplayName'),
@@ -251,7 +251,7 @@ values (1, 'skype', 'userSkype'),
        (2, 'tg', 'adminTg'),
        (2, 'vk', 'adminVk');
 
---changeset kriffer:add_dashboard
+--changeset kriffer:id 2:add_dashboard
 
 INSERT INTO project (id, code, title, description, type_code, startpoint, endpoint, parent_id) VALUES (2, 'task tracker', 'PROJECT-1', 'test project', 'task tracker', null, null, null);
 
@@ -267,8 +267,23 @@ INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, st
 INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (5, 4, 2, 2, 'admin', null, null);
 INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (6, 5, 2, 2, 'admin', null, null);
 
---changeset kriffer:add_qctivity
+--changeset admin:id 2:add_newTasks
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (6, 'Task-6', 'test 6 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (7, 'Task-7', 'test 7 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (8, 'Task-8', 'test 8 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (9, 'Task-9', 'test 9 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (10, 'Task-10', 'test 10 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (11, 'Task-11', 'test 11 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (12, 'Task-12', 'test 12 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (13, 'Task-13', 'test 13 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (14, 'Task-14', 'test 14 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (15, 'Task-15', 'test 15 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (16, 'Task-16', 'test 16 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (17, 'Task-17', 'test 17 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
+
+/*--changeset kriffer:add_qctivity
 
 INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (1, 1, 2, '2022-05-01 10:00:00', 'in progress');
 INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (2, 1, 2, '2022-05-05 12:00:00', 'ready');
 INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (3, 1, 2, '2022-05-10 14:00:00', 'done');
+*/

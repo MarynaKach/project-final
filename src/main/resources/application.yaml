@@ -14,7 +14,7 @@ spring:
 
 # validate db by model
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 
     properties:
       #  http://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html#configurations

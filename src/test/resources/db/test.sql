@@ -1,3 +1,6 @@
+--liquibase formatted sql
+
+--changeset kmpk:init_schema
 DROP TABLE IF EXISTS USER_ROLE;
 DROP TABLE IF EXISTS CONTACT;
 DROP TABLE IF EXISTS MAIL_CASE;
@@ -175,6 +178,7 @@ create table USER_ROLE
     constraint FK_USER_ROLE foreign key (USER_ID) references USERS (ID) on delete cascade
 );
 
+--changeset kmpk:populate_data
 
 insert into users (EMAIL, PASSWORD, FIRST_NAME, LAST_NAME, DISPLAY_NAME)
 values ('user@gmail.com', '{noop}password', 'userFirstName', 'userLastName', 'userDisplayName'),
@@ -248,7 +252,7 @@ values (1, 'skype', 'userSkype'),
        (2, 'tg', 'adminTg'),
        (2, 'vk', 'adminVk');
 
--- bugtracking
+--changeset kriffer:add_dashboard
 INSERT INTO project (id, code, title, description, type_code, startpoint, endpoint, parent_id) VALUES (2, 'task tracker', 'PROJECT-1', 'test project', 'task tracker', null, null, null);
 
 INSERT INTO sprint (id, status_code, startpoint, endpoint, title, project_id) VALUES (1, 'planning', '2023-04-09 23:05:05.000000', '2023-04-12 23:05:12.000000', 'Sprint-1', 2);
@@ -262,4 +266,6 @@ INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, st
 INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (4, 3, 2, 2, 'admin', null, null);
 INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (5, 4, 2, 2, 'admin', null, null);
 INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, startpoint, endpoint) VALUES (6, 5, 2, 2, 'admin', null, null);
-
+INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (1, 1, 2, '2022-05-01 10:00:00', 'in progress');
+INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (2, 1, 2, '2022-05-05 12:00:00', 'ready');
+INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (3, 1, 2, '2022-05-10 14:00:00', 'done');

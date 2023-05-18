@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<th:block th:replace="~{layout/main::page(title='JiraRush: mini bugtracking system',appMain=~{::appMain})}">
+    <appMain>
+        <style>
+            th, td {
+                font-size: large;
+                border: solid;
+                color: darkblue;
+            }
+
+            .button_page {
+                color: white;
+                border: 2px solid black;
+                margin: 5px;
+                padding: 20px;
+                font-size: large;
+            }
+        </style>
+        <body>
+        <div class="row">
+            <div class="col" th:each="task: ${tasks}">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-2 text-muted" style="text-align: left; "
+                            th:text="${task.title}"></h5>
+                        <h6 class="card-subtitle mb-2 text-muted" style="text-align: left; "
+                            th:text="${task.description}"></h6>
+                        <h6 class="card-subtitle mb-2 text-muted" style="text-align: left; "
+                            th:text="${task.priorityCode}"></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2>
+            <button th:each="pageNumber : ${page_numbers}" class="button_page">
+                <a th:href="@{/tasks/backlog(page=${pageNumber}, limit=4)}" th:text="${pageNumber}"></a>
+            </button>
+        </h2>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        </body>
+    </appMain>
+</th:block>
