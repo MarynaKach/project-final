@@ -281,9 +281,8 @@ INSERT INTO task (id, title, description, type_code, status_code, priority_code,
 INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (16, 'Task-16', 'test 16 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
 INSERT INTO task (id, title, description, type_code, status_code, priority_code, estimate, updated, project_id, sprint_id, parent_id, startpoint, endpoint) VALUES (17, 'Task-17', 'test 17 descr', 'task', 'unassigned', 'low', null, null, 2, null, null, null, null);
 
-/*--changeset kriffer:add_qctivity
+--changeset kriffer:add_qctivity
 
 INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (1, 1, 2, '2022-05-01 10:00:00', 'in progress');
 INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (2, 1, 2, '2022-05-05 12:00:00', 'ready');
 INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (3, 1, 2, '2022-05-10 14:00:00', 'done');
-*/

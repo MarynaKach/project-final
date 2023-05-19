@@ -25,4 +25,3 @@ spring:
   liquibase:
     enabled: true
     changeLog: "classpath:db/test.sql"
-
