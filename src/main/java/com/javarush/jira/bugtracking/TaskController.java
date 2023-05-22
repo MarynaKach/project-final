@@ -1,23 +1,19 @@
 package com.javarush.jira.bugtracking;
 
 import com.javarush.jira.common.error.NotFoundException;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
 @Slf4j
-@Controller
-@AllArgsConstructor
-@RequestMapping("/tasks")
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/tasks")
 public class TaskController {
 
-    @Autowired
-    private TaskService taskService;
+    private final TaskService taskService;
 
     @PutMapping("/{taskId}/saveTag")
     public ResponseEntity<String> saveTaskTag(@PathVariable Long taskId, @RequestBody String tag) {

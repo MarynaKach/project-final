@@ -1,6 +1,7 @@
 --liquibase formatted sql
 
 --changeset kmpk:init_schema
+DROP TABLE IF EXISTS subscribed_task;
 DROP TABLE IF EXISTS USER_ROLE;
 DROP TABLE IF EXISTS CONTACT;
 DROP TABLE IF EXISTS MAIL_CASE;
@@ -173,6 +174,13 @@ create table USER_ROLE
     ROLE    smallint not null,
     constraint UK_USER_ROLE unique (USER_ID, ROLE),
     constraint FK_USER_ROLE foreign key (USER_ID) references USERS (ID) on delete cascade
+);
+CREATE TABLE subscribed_task (
+    task_id bigint NOT NULL,
+    user_id bigint NOT NULL,
+    PRIMARY KEY (task_id, user_id),
+    FOREIGN KEY (task_id) REFERENCES task (id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
 --changeset kmpk:id 1:populate_data

@@ -57,4 +57,8 @@ public interface UserRepository extends BaseRepository<User> {
     @Query(value = "DELETE FROM subscribed_task WHERE task_id = :taskId AND user_id = :userId", nativeQuery = true)
     void unsubscribeFromTask(@Param("taskId") Long taskId, @Param("userId") Long userId);
 
+
+    @Query(value = "SELECT COUNT(*) FROM subscribed_task WHERE user_id = :userId AND task_id = :taskId", nativeQuery = true)
+    Long checkIfSubscribed(@Param("userId") Long userId, @Param("taskId") Long taskId);
+
 }
