@@ -7,7 +7,6 @@ DROP TABLE IF EXISTS CONTACT;
 DROP TABLE IF EXISTS MAIL_CASE;
 DROP TABLE IF EXISTS PROFILE;
 DROP TABLE IF EXISTS TASK_TAG;
-DROP TABLE IF EXISTS TASK_TAGS;
 DROP TABLE IF EXISTS USER_BELONG;
 DROP TABLE IF EXISTS ACTIVITY;
 DROP TABLE IF EXISTS TASK;
@@ -133,7 +132,7 @@ create table ACTIVITY
     TYPE_CODE     varchar(32),
     STATUS_CODE   varchar(32),
     PRIORITY_CODE varchar(32),
-    constraint FK_ACTIVITY_USERS foreign key (AUTHOR_ID) references USERS (ID),
+    constraint FK_ACTIVITY_USERS foreign key (AUTHOR_ID) references USERS (ID) on delete cascade,
     constraint FK_ACTIVITY_TASK foreign key (TASK_ID) references TASK (ID) on delete cascade
 );
 

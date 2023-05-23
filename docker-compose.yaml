@@ -3,8 +3,8 @@ services:
   jira-server:
     environment:
       - DB_URL=jdbc:postgresql://db:5432/jira
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=qwerty
+      - POSTGRES_DB=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     build:
       context: .
       dockerfile: Dockerfile
@@ -18,11 +18,8 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_DB=jira
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=qwerty
-    volumes:
-      - ./init-db:/docker-entrypoint-initdb.d
+      - POSTGRES_DB=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
 
   nginx:
     image: nginx
@@ -30,5 +27,6 @@ services:
       - 80:80
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf
+      - ./resources:/opt/resources
     depends_on:
       - jira-server

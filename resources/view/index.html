@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:lang="en" >
+<html xmlns:th="http://www.thymeleaf.org" th:lang="en">
 <!--/*@thymesVar id="authUser" type="com.javarush.jira.login.AuthUser"*/-->
 <!--/*@thymesVar id="taskMap" type="java.util.Map<com.javarush.jira.bugtracking.to.SprintTo, java.util.List<com.javarush.jira.bugtracking.to.TaskTo>>"*/-->
 
@@ -32,6 +32,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="text-center" style="position: fixed; bottom: 20px; right: 20px;">
+            <a href="/tasks/backlog" class="btn btn-primary btn-yellow font-weight-bold text-primary backlog-button">Go to Backlog</a>
         </div>
     </appMain>
 </th:block>
