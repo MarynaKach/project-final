@@ -22,10 +22,12 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.handler.WebRequestHandlerInterceptorAdapter;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.mvc.UrlFilenameViewController;
 
 import java.time.Duration;
+import java.util.Locale;
 import java.util.Properties;
 
 //@EnableWebMvc : http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-spring-mvc-auto-configuration
@@ -59,6 +61,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LocaleChangeInterceptor());
         registry.addInterceptor(authInterceptor).excludePathPatterns("/api/**");
     }
 
@@ -102,7 +105,7 @@ public class MvcConfig implements WebMvcConfigurer {
     @Bean
     public LocaleResolver localeResolver(){
         SessionLocaleResolver resolver = new SessionLocaleResolver();
-        // resolver.setLocale(new Locale("en"));
+        //resolver.setDefaultLocale(Locale.US);
         return resolver;
     }
     @Bean

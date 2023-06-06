@@ -13,8 +13,12 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -29,6 +33,7 @@ public class UserTo extends BaseTo implements HasIdAndEmail, Serializable {
 
     @NotBlank(groups = {View.OnCreate.class})
     @Size(min = 5, max = 32, groups = {View.OnCreate.class})
+    // возможно здесь нужно поставить Ignore чтоб он его не сериализовал
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonView(View.OnCreate.class)
     @Schema(accessMode = Schema.AccessMode.WRITE_ONLY) // https://stackoverflow.com/a/28025008/548473

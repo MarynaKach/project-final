@@ -1,15 +1,18 @@
 package com.javarush.jira.bugtracking;
 
 import com.javarush.jira.bugtracking.to.TaskTo;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.net.http.HttpRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -20,16 +23,14 @@ import java.util.stream.IntStream;
 @RequestMapping("/tasks/backlog")
 public class BacklogController {
     @Autowired
-    private final TaskService taskService;
+    private final BacklogService backlogService;
 
     @GetMapping()
     public String getTasks(Model model,
+                           HttpServletRequest request,
                            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
                            @RequestParam(value = "limit", required = false, defaultValue = "4") int limit) {
-        List<TaskTo> tasks = taskService.getAll();
-        List<TaskTo> taskMap = tasks.stream()
-                .filter(task -> task.getSprint() == null)
-                .collect(Collectors.toList());
+        List<TaskTo> taskMap = backlogService.getBacklogTasks();
         int offset = (page - 1) * limit;
         int totalCount = taskMap.size();
         int totalPages = (int) Math.ceil((double) totalCount / limit);

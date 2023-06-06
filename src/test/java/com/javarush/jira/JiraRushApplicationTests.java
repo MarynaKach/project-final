@@ -12,5 +12,6 @@ import org.springframework.test.context.TestPropertySource;
 class JiraRushApplicationTests {
 	@Test
 	void contextLoads() {
+		System.out.println("");
 	}
 }

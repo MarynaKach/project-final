@@ -18,6 +18,8 @@ import java.util.Optional;
 
 import static com.javarush.jira.login.internal.config.SecurityConfig.PASSWORD_ENCODER;
 
+//import static com.javarush.jira.login.internal.config.SecurityConfig.PASSWORD_ENCODER;
+
 @Transactional(readOnly = true)
 @CacheConfig(cacheNames = "users")
 public interface UserRepository extends BaseRepository<User> {
@@ -31,7 +33,6 @@ public interface UserRepository extends BaseRepository<User> {
     default User prepareAndCreate(User user) {
         return prepareAndUpdate(user, PASSWORD_ENCODER.encode(user.getPassword()));
     }
-
     @Transactional
     @CacheEvict(key = "#user.email")
     default User prepareAndUpdate(User user, String encPassword) {

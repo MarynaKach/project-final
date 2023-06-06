@@ -28,5 +28,6 @@ services:
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf
       - ./resources:/opt/resources
+      - ./resources/static:/opt/resources/static
     depends_on:
       - jira-server

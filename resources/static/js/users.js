@@ -5,13 +5,21 @@ const ctx = {
     ajaxUrl: userUrl,
     pageName: "user"
 }
-
+function getAccessTokenFromResponseHeaders(xhr) {
+    var authorizationHeader = xhr.getResponseHeader("Authorization");
+    if (authorizationHeader) {
+        accessToken = authorizationHeader.split("Bearer ")[1];
+    }
+}
 function enable(chkbox, id) {
     var enabled = chkbox.is(":checked");
 //  https://stackoverflow.com/a/22213543/548473
     $.ajax({
         url: userUrl + '/' + id,
         type: "PATCH",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getAccessTokenFromResponseHeaders());
+        },
         data: "enabled=" + enabled
     }).done(function () {
         chkbox.closest("tr").attr("data-user-enabled", enabled);
@@ -88,3 +96,4 @@ $(function () {
         }
     });
 });
+

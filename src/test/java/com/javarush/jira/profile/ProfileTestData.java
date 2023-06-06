@@ -23,5 +23,9 @@ public class ProfileTestData {
     public static ProfileTo createProfileTo() {
         return new ProfileTo(ADMIN_ID, Collections.emptySet(), Collections.emptySet());
     }
+    public static User getUpdated() {
+        return new User(7l, "test@test.com", "updatedPassword", "updatedFirstName", "updatedLastName",
+                "updatedDisplayName", Role.DEV, Role.ADMIN);
+    }
 
 }

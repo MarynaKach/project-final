@@ -91,7 +91,9 @@ spring:
     password: ${MAIL_PASSWORD}
     port: 587
   thymeleaf.check-template-location: false
-
+jwt:
+  secret: ${jwt.secret}
+  expiration: ${jwt.expiration}
 logging:
   level:
     root: WARN

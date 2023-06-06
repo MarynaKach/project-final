@@ -1,4 +1,5 @@
 --liquibase formatted sql
+DROP ALL OBJECTS;
 
 --changeset kmpk:init_schema
 DROP TABLE IF EXISTS subscribed_task;
@@ -276,3 +277,4 @@ INSERT INTO user_belong (id, object_id, object_type, user_id, user_type_code, st
 INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (1, 1, 2, '2022-05-01 10:00:00', 'in progress');
 INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (2, 1, 2, '2022-05-05 12:00:00', 'ready');
 INSERT INTO ACTIVITY (ID, AUTHOR_ID, TASK_ID, UPDATED, STATUS_CODE) VALUES (3, 1, 2, '2022-05-10 14:00:00', 'done');
+INSERT INTO subscribed_task(task_id, user_id) VALUES (5, 3);

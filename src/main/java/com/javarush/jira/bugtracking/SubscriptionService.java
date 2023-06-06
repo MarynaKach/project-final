@@ -4,6 +4,7 @@ import com.javarush.jira.bugtracking.internal.repository.TaskRepository;
 import com.javarush.jira.common.error.AlreadySubscribedException;
 import com.javarush.jira.common.error.NotFoundException;
 import com.javarush.jira.login.internal.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 @Component
+@AllArgsConstructor
 public class SubscriptionService {
     @Autowired
     private UserRepository userRepository;
