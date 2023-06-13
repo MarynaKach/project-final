@@ -8,6 +8,10 @@ app:
     max-pool-size: 100
 
 spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+    validation:
+      enabled: true
   jpa:
     show-sql: true
     open-in-view: false

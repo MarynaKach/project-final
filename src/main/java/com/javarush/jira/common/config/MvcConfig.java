@@ -61,7 +61,8 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LocaleChangeInterceptor());
+        // registry.addInterceptor(new LocaleChangeInterceptor());
+        registry.addInterceptor(localeChangeInterceptor());
         registry.addInterceptor(authInterceptor).excludePathPatterns("/api/**");
     }
 
@@ -108,6 +109,13 @@ public class MvcConfig implements WebMvcConfigurer {
         //resolver.setDefaultLocale(Locale.US);
         return resolver;
     }
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+        interceptor.setParamName("locale"); // Имя параметра в запросе, которое будет указывать на выбранную локаль
+        return interceptor;
+    }
+
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();

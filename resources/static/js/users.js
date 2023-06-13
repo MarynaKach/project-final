@@ -17,9 +17,6 @@ function enable(chkbox, id) {
     $.ajax({
         url: userUrl + '/' + id,
         type: "PATCH",
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("Authorization", 'Bearer ' + getAccessTokenFromResponseHeaders());
-        },
         data: "enabled=" + enabled
     }).done(function () {
         chkbox.closest("tr").attr("data-user-enabled", enabled);
