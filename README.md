@@ -65,11 +65,10 @@ All sensitive information should be in the .env file, or you should change appli
 9. Write a Dockerfile for the main server.
 
     <span style="font-weight: bold;">✅ Done</span>
-    <span style="color: red;">❌ Not done</span> don't work now, hane mistake that I has already had, problem with Thymeleaf exception,earlier the problem was solved by adding LoginController class with parameter errorParam, now I didn't manage to fix before pull request, will do it nearest time
+   have a bug with language changing (no such bug if start from idea)
 10. Write a docker-compose file to run the server container along with the database and nginx. Use the config/nginx.conf file for nginx. Edit the config file if necessary.
 
     <span style="font-weight: bold;">✅ Done</span>
-    <span style="color: red;">❌ Not done</span> don't work now, hane mistake that I has already had, problem with Thymeleaf exception,earlier the problem was solved by adding LoginController class with parameter errorParam, now I didn't manage to fix before pull request, will do it nearest time
 11. Add localization for at least two languages to email templates (mails) and the index.html landing page.
 
     <span style="font-weight: bold;">✅ Done</span>
