@@ -184,3 +184,8 @@ tr[data-user-enabled="false"] {
     background-color: var(--main-background);
     /*height: 100vh;*/
 }
+
+.backlog-button {
+    color: blue !important;
+    font-weight: bold !important;
+}

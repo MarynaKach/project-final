@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<!--/*@thymesVar id="authUser" type="com.javarush.jira.login.AuthUser"*/-->
 
 <div th:fragment="header">
     <header class="fixed-top d-none d-md-block header-nav">
         <nav class="navbar navbar-expand-lg navbar-dark" id="header">
             <div class="container">
                 <div class="collapse navbar-collapse mt-2 mb-2">
-                    <ul class="navbar-nav m-auto">
+                    <ul class="navbar-nav m-auto ms-auto">
                         <form class="d-flex" role="search">
                             <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="header-search">
                         </form>
@@ -15,18 +14,32 @@
                             <a href="/doc" type="button" class="btn btn-yellow" target="_blank">Swagger API</a>
                         </li>
                     </ul>
-                    <div th:if="${authUser} == null">
-                        <a href="/view/login" type="button" class="btn btn-orange">Login/Register</a>
+                    <div class="d-flex">
+                        <div th:if="${authUser} == null">
+                            <a href="/view/login" type="button" class="btn btn-orange me-2">Login/Register</a>
+                        </div>
+                        <div class="d-flex">
+                            <div th:if="${authUser} != null" class="me-2">
+                                <a href="/ui/profile" type="button" class="btn btn-orange"><i class="fa-solid fa-address-card"></i> Profile</a>
+                            </div>
+                            <div th:if="${authUser} != null" class="me-2">
+                                <form action="/ui/logout" method="post" class="mx-2">
+                                    <button class="btn btn-yellow btn-orange" type="submit"><i class="fa-solid fa-sign-out"></i> Logout</button>
+                                </form>
+                            </div>
+                            <form id="lang-form" class="d-flex" th:action="@{/}" method="get">
+                                <label for="languages"></label>
+                                <select class="btn btn-orange" id="languages" name="locale" onchange="this.form.submit()">
+                                    <option th:value="ru" th:text="RU" th:selected="${#locale.language == 'ru'}"></option>
+                                    <option th:value="en" th:text="EN" th:selected="${#locale.language == 'en'}"></option>
+                                </select>
+                            </form>
+                        </div>
+
                     </div>
-                    <th:block th:if="${authUser} != null">
-                        <a href="/ui/profile" type="button" class="btn btn-orange"><i class="fa-solid fa-address-card"></i> Profile</a>
-                        <form action="/ui/logout" method="post" class="mx-2">
-                            <button class="btn btn-yellow btn-orange" type="submit"><i class="fa-solid fa-sign-out"></i> Logout</button>
-                        </form>
-                    </th:block>
+
+                    </div>
                 </div>
-            </div>
         </nav>
     </header>
 </div>
-</html>

@@ -5,7 +5,12 @@ const ctx = {
     ajaxUrl: userUrl,
     pageName: "user"
 }
-
+function getAccessTokenFromResponseHeaders(xhr) {
+    var authorizationHeader = xhr.getResponseHeader("Authorization");
+    if (authorizationHeader) {
+        accessToken = authorizationHeader.split("Bearer ")[1];
+    }
+}
 function enable(chkbox, id) {
     var enabled = chkbox.is(":checked");
 //  https://stackoverflow.com/a/22213543/548473
@@ -88,3 +93,4 @@ $(function () {
         }
     });
 });
+

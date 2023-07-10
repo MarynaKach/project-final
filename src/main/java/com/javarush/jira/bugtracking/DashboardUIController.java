@@ -25,6 +25,7 @@ public class DashboardUIController {
     public String getAll(Model model) {
         List<TaskTo> tasks = taskService.getAll();
         Map<SprintTo, List<TaskTo>> taskMap = tasks.stream()
+                .filter(task -> task.getSprint() != null)
                 .collect(Collectors.groupingBy(TaskTo::getSprint));
         model.addAttribute("taskMap", taskMap);
         return "index";
